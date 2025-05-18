@@ -27,8 +27,6 @@ class ProductController extends Controller
 
         $products = Product::filter($request)->get();
         $cats = ProductCategory::get();
-
-        // print_r($products->category);die;
     
         return view('product.products', [
             'user' => $request->user(),
@@ -60,7 +58,6 @@ class ProductController extends Controller
         $cats = ProductCategory::get();
         $products = Auth::user()->products;
 
-        // print_r($cats);die;
         return view('product.add', [
             'user' => $request->user(),'products'=>$products,'cats'=>$cats
         ]);
@@ -108,6 +105,17 @@ class ProductController extends Controller
         $product->update($data);
     
         return redirect()->route('product.edit', $id)->with('success', 'Product updated successfully!');
+    }
+
+
+    public function view(string $id)
+    {
+        $product = Product::findOrFail($id);
+
+        return view('product.details',['product' => $product]);
+
+
+
     }
     
 
@@ -157,7 +165,34 @@ class ProductController extends Controller
 
 
 
+    public function createCategory(Request $request)
+    {
+
+        $cats = ProductCategory::get();
+
+        return view('product.add-cat', [
+            'user' => $request->user(),'cats'=>$cats
+        ]);
+    }
+
+
+    public function catStore(Request $request)
+    {
+
+        $data = $request->all();
+        ProductCategory::create($data);
     
+        return back()->with('success', 'Category added.');
+    }
+
+
+    public function catDestroy(string $id)
+    {
+        $product = ProductCategory::findOrFail($id);
+        $product->delete();
+        return back()->with('success', 'Category deleted successfully.');
+
+    }
 
    
 }

@@ -35,8 +35,6 @@ class BlogController extends Controller
 
         $blogs = Auth::user()->blogs;
 
-        // print_r($blogs);die;
-
         return view('blog.add', [
             'user' => $request->user(),'blogs'=>$blogs
         ]);

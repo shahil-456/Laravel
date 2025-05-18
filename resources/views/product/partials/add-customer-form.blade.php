@@ -42,11 +42,19 @@
 
         <div>
             <x-input-label for="category_id" :value="__('Category')" />
+            
             <select id="category_id" name="category_id" class="mt-1 block w-full" required>
                 @foreach($cats as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
+
+            <a href="{{ route('category.add') }}" style="background-color: rgb(83, 109, 238); color: white; padding: 8px 12px; text-decoration: none; display: inline-block;">Add New Category</a>
+
+
+            
+
+
             <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
         </div>
         

@@ -101,6 +101,8 @@
                       <input type="hidden" name="product_id" value="{{ $blog->id }}">
                       <button type="submit" style="background-color: #007bff; color: white; padding: 8px 12px; border: none; cursor: pointer;">Add to Cart</button>
                     </form>
+
+                    <a href="{{ route('product.view', $blog->id) }}" style="background-color: rgb(41, 185, 140); color: white; padding: 8px 12px; text-decoration: none; display: inline-block;">View</a>
                   
                     @auth
                     @if(auth()->user()->role === 'admin')

@@ -24,8 +24,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-    // admin"s routesssss
 
+
+
+    // admin"s routesssss
 
     Route::middleware([IsAdmin::class])->group(function () {
 
@@ -43,9 +45,6 @@ Route::get('/dashboard', function () {
 
     Route::middleware('auth')->group(function () {
 
-   
-
-
     //Blogssss
 
     Route::get('/all-blogs', [BlogController::class, 'index'])->name('blog.all');
@@ -54,15 +53,16 @@ Route::get('/dashboard', function () {
 
     Route::post('/blog/create', [BlogController::class, 'store'])->name('blog.store');
 
-    Route::get('/blog/view/{id}', [BlogController::class, 'show'])->name('blog.view');
-
     Route::get('/edit-blog/{id}', [BlogController::class, 'edit'])->name('blog.edit');
 
     Route::post('/update-blog/{id}', [BlogController::class, 'update'])->name('blog.update');
 
-    Route::get('/destroy-blog/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+    Route::get('/blog/view/{id}', [BlogController::class, 'show'])->name('blog.view');
 
     Route::post('/comments/create', [CommentController::class, 'store'])->name('comments.store');
+
+    Route::get('/destroy-blog/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+
 
 
 
@@ -72,9 +72,7 @@ Route::get('/dashboard', function () {
 
     Route::get('/all-products', [ProductController::class, 'index'])->name('product.all');
 
-
     Route::get('/add-product', [ProductController::class, 'create'])->name('product.add');
-
 
     Route::post('/product/create', [ProductController::class, 'store'])->name('product.store');
 
@@ -82,10 +80,15 @@ Route::get('/dashboard', function () {
 
     Route::post('/update-product/{id}', [ProductController::class, 'update'])->name('product.update');
 
-
+    Route::get('/view-product/{id}', [ProductController::class, 'view'])->name('product.view');
 
     Route::get('/destroy-product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
+    Route::get('/add-category', [ProductController::class, 'createCategory'])->name('category.add');
+
+    Route::post('/cat/create', [ProductController::class, 'catStore'])->name('category.store');
+
+    Route::get('/cat/destroy/{id}', [ProductController::class, 'catDestroy'])->name('cat.destroy');
 
     Route::post('/cart/add', [ProductController::class, 'addToCart'])->name('cart.add');
 
@@ -93,10 +96,18 @@ Route::get('/dashboard', function () {
 
     Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
 
-
     Route::get('/all-orders', [ProductController::class, 'allOrders'])->name('order.all');
-
    
+  
+ 
+
+
+
+
+
+
+
+
 
 
 
@@ -106,7 +117,6 @@ Route::get('/dashboard', function () {
 
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

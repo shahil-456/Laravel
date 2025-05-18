@@ -32,8 +32,6 @@ class UserController extends Controller
     public function create(Request $request)
     {
 
-        // $users = User::get();
-
         $users = Auth::user()->users;
         
         return view('user.add', [
