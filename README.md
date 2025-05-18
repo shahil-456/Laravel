@@ -3,7 +3,7 @@
 php >= 8.3
 
 1. Clone the repository  
-   git clone https://github.com/shahil-456/Laravel-
+   git clone https://github.com/shahil-456/Laravel
 
 2. Go to project directory  
    cd C:\Users\YourUsername\Desktop\laravel
@@ -51,9 +51,9 @@ php artisan app:notify-inactive-users
 
 
 
-<!-- Notified mails can be seen Laravel Log File -->
+ Notified mails can be seen Laravel Log File 
 
-storage\logs\laravel.log
+   \storage\logs\laravel.log
 
 
 
