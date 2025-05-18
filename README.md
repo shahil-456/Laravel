@@ -38,8 +38,9 @@ php >= 8.3
 
 # Admin User
 
-admin@gmail.com
-0123456789
+email-  admin@gmail.com
+
+pw-     0123456789
 
 
 # Notify Command for Users
